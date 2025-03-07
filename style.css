@@ -265,3 +265,31 @@ header.header-scrolled {
     nav.show ul li:nth-child(4) { transition-delay: 0.4s; }
     nav.show ul li:nth-child(5) { transition-delay: 0.5s; }
 }
+
+/* Add styles for the main content area */
+main {
+    margin-top: 70px;
+    padding: 30px 0;
+    min-height: calc(100vh - 140px);
+}
+
+/* Footer styles */
+footer {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    font-size: 0.9rem;
+}
+
+/* Additional responsive adjustments for GitHub Pages */
+@media (max-width: 768px) {
+    main {
+        margin-top: 60px;
+        padding: 20px 0;
+    }
+}
