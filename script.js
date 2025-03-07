@@ -75,4 +75,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize active link
     updateActiveNavLink();
+
+    // Add console check to ensure the script is loading properly on GitHub Pages
+    console.log('CZ emballage script loaded successfully');
+    
+    // Add a check for GitHub Pages environment
+    const isGitHubPages = window.location.hostname.includes('github.io');
+    if (isGitHubPages) {
+        console.log('Running on GitHub Pages');
+        // Make any GitHub Pages specific adjustments here if needed
+    }
 });
