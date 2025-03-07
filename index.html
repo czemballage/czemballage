@@ -2,6 +2,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>الشركة المتميزة للعلب الكرتونية - منتجات كرتونية عالية الجودة</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -13,11 +16,15 @@
     <!-- القائمة العلوية -->
     <header>
         <div class="container">
+            <!-- Updated Logo Markup -->
             <div class="logo">
-                <img src="https://i.ibb.co/WrpVP3r/image.png" alt="CZ Emballage Logo" class="company-logo">
-                <span class="company-name">
-                    <span class="red-text">CZ</span> <span class="black-text">emballage</span>
-                </span>
+                <a href="#home" class="logo-link">
+                    <img src="https://i.ibb.co/WrpVP3r/image.png" alt="Logo" class="logo-img">
+                    <h1 class="company-name">
+                        <span class="company-name-red">CZ</span>
+                        <span class="company-name-black">emballage</span>
+                    </h1>
+                </a>
             </div>
             <nav id="navbar">
                 <ul>
@@ -46,7 +53,14 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=500" alt="علب كرتونية متميزة" />
+                <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="130" y="100" width="240" height="200" fill="#e4b062" stroke="#8c5c33" stroke-width="4"/>
+                    <path d="M130 100 L250 50 L370 100" fill="#f7cc8f" stroke="#8c5c33" stroke-width="4"/>
+                    <path d="M370 100 L370 300 L250 350 L250 150 L370 100" fill="#d9a357" stroke="#8c5c33" stroke-width="4"/>
+                    <path d="M250 150 L250 350 L130 300 L130 100" fill="#c99548" stroke="#8c5c33" stroke-width="4"/>
+                    <path d="M250 50 L250 150" stroke="#8c5c33" stroke-width="4" stroke-dasharray="5,5"/>
+                    <rect x="170" y="200" width="60" height="40" fill="#8c5c33" opacity="0.3"/>
+                </svg>
             </div>
         </div>
     </section>
@@ -156,56 +170,99 @@
             <div class="products-grid">
                 <div class="product-card" data-category="shipping">
                     <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&q=80&w=200" alt="علبة شحن قياسية" />
+                        <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="40" y="30" width="120" height="90" fill="#d9a357" stroke="#8c5c33" stroke-width="2"/>
+                            <line x1="40" y1="30" x2="160" y2="30" stroke="#8c5c33" stroke-width="2"/>
+                            <line x1="40" y1="120" x2="160" y2="120" stroke="#8c5c33" stroke-width="2"/>
+                        </svg>
                     </div>
                     <h3>علبة شحن قياسية</h3>
                     <p>علبة متينة بحجم قياسي مناسبة للشحن المحلي والدولي</p>
                 </div>
                 <div class="product-card" data-category="shipping">
                     <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&q=80&w=200" alt="علبة شحن بنافذة" />
+                        <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="30" y="30" width="140" height="90" fill="#d9a357" stroke="#8c5c33" stroke-width="2"/>
+                            <line x1="30" y1="30" x2="170" y2="30" stroke="#8c5c33" stroke-width="2"/>
+                            <line x1="30" y1="120" x2="170" y2="120" stroke="#8c5c33" stroke-width="2"/>
+                            <rect x="60" y="50" width="80" height="50" fill="#8c5c33" opacity="0.3"/>
+                        </svg>
                     </div>
                     <h3>علبة شحن بنافذة</h3>
                     <p>علبة شحن مع نافذة عرض شفافة لمعاينة المحتويات</p>
                 </div>
                 <div class="product-card" data-category="gift">
                     <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&q=80&w=200" alt="علبة هدايا أنيقة" />
+                        <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="50" y="40" width="100" height="70" fill="#f7cc8f" stroke="#8c5c33" stroke-width="2"/>
+                            <rect x="90" y="40" width="20" height="70" fill="#e4b062" stroke="#8c5c33" stroke-width="1"/>
+                            <rect x="50" y="75" width="100" height="5" fill="#e4b062" stroke="#8c5c33" stroke-width="1"/>
+                            <path d="M100 30 Q120 10 140 30" stroke="#d14836" stroke-width="3" fill="none"/>
+                            <circle cx="140" cy="30" r="5" fill="#d14836"/>
+                        </svg>
                     </div>
                     <h3>علبة هدايا أنيقة</h3>
                     <p>علبة هدايا فاخرة بتصميم أنيق وشريط مميز</p>
                 </div>
                 <div class="product-card" data-category="gift">
                     <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&q=80&w=200" alt="علبة هدايا فاخرة" />
+                        <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="50" y="50" width="100" height="60" fill="#f7cc8f" stroke="#8c5c33" stroke-width="2" rx="10" ry="10"/>
+                            <rect x="60" y="60" width="80" height="40" fill="none" stroke="#8c5c33" stroke-width="1" stroke-dasharray="2,2" rx="5" ry="5"/>
+                            <path d="M80 40 Q100 20 120 40" stroke="#d14836" stroke-width="3" fill="none"/>
+                            <circle cx="80" cy="40" r="5" fill="#d14836"/>
+                            <circle cx="120" cy="40" r="5" fill="#d14836"/>
+                        </svg>
                     </div>
                     <h3>علبة هدايا فاخرة</h3>
                     <p>علبة هدايا مستديرة الزوايا مع تفاصيل داخلية مميزة</p>
                 </div>
                 <div class="product-card" data-category="food">
                     <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&q=80&w=200" alt="علبة طعام مقسمة" />
+                        <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M50 60 L50 110 L150 110 L150 60 L130 50 L70 50 Z" fill="#f7f7f7" stroke="#8c5c33" stroke-width="2"/>
+                            <path d="M70 50 L70 30 L130 30 L130 50" fill="none" stroke="#8c5c33" stroke-width="2"/>
+                            <line x1="90" y1="50" x2="90" y2="110" stroke="#8c5c33" stroke-width="1" stroke-dasharray="3,3"/>
+                            <line x1="110" y1="50" x2="110" y2="110" stroke="#8c5c33" stroke-width="1" stroke-dasharray="3,3"/>
+                        </svg>
                     </div>
                     <h3>علبة طعام مقسمة</h3>
                     <p>علبة طعام مقسمة مثالية للمطاعم والكافيهات</p>
                 </div>
                 <div class="product-card" data-category="food">
                     <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&q=80&w=200" alt="علبة وجبات سريعة" />
+                        <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="60" y="40" width="80" height="60" fill="#f7f7f7" stroke="#8c5c33" stroke-width="2"/>
+                            <path d="M60 40 L90 20 L170 20 L140 40" fill="#f7f7f7" stroke="#8c5c33" stroke-width="2"/>
+                            <path d="M140 40 L140 100 L170 80 L170 20" fill="#f7f7f7" stroke="#8c5c33" stroke-width="2"/>
+                            <circle cx="100" cy="70" r="15" fill="none" stroke="#8c5c33" stroke-width="1" stroke-dasharray="2,2"/>
+                        </svg>
                     </div>
                     <h3>علبة وجبات سريعة</h3>
                     <p>علبة مناسبة للوجبات السريعة مع تصميم مريح للاستخدام</p>
                 </div>
                 <div class="product-card" data-category="custom">
                     <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&q=80&w=200" alt="علبة سداسية مخصصة" />
+                        <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M60 40 L100 20 L140 40 L140 100 L100 120 L60 100 Z" fill="#e4b062" stroke="#8c5c33" stroke-width="2"/>
+                            <path d="M100 20 L100 70" stroke="#8c5c33" stroke-width="2" stroke-dasharray="5,5"/>
+                            <path d="M100 70 L140 40" stroke="#8c5c33" stroke-width="2" stroke-dasharray="5,5"/>
+                            <path d="M100 70 L60 40" stroke="#8c5c33" stroke-width="2" stroke-dasharray="5,5"/>
+                            <path d="M100 70 L100 120" stroke="#8c5c33" stroke-width="2" stroke-dasharray="5,5"/>
+                        </svg>
                     </div>
                     <h3>علبة سداسية مخصصة</h3>
                     <p>علبة بتصميم سداسي فريد يمكن تخصيصها حسب الطلب</p>
                 </div>
                 <div class="product-card" data-category="custom">
                     <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&q=80&w=200" alt="علبة مجوهرات فاخرة" />
+                        <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M60 70 L100 40 L140 70 L100 100 Z" fill="#f7cc8f" stroke="#8c5c33" stroke-width="2"/>
+                            <path d="M100 40 L100 20" stroke="#8c5c33" stroke-width="2"/>
+                            <circle cx="100" cy="20" r="10" fill="#f7cc8f" stroke="#8c5c33" stroke-width="2"/>
+                            <path d="M100 100 L100 120" stroke="#8c5c33" stroke-width="2"/>
+                            <path d="M90 120 L110 120" stroke="#8c5c33" stroke-width="2"/>
+                        </svg>
                     </div>
                     <h3>علبة مجوهرات فاخرة</h3>
                     <p>علبة مخصصة للمجوهرات والهدايا الثمينة بتصميم فريد</p>
@@ -348,7 +405,7 @@
                         </div>
                         <div class="contact-text">
                             <h4>البريد الإلكتروني</h4>
-                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b4dddad2dbf4c4c6d1d9ddc1d999d6dbccd1c79ad7dbd9">[email&#160;protected]</a></p>
+                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="deb7b0b8b19eaeacbbb3b7abb3f3bcb1a6bbadf0bdb1b3">[email&#160;protected]</a></p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -484,7 +541,7 @@
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h3>ما هي خيارات الطباعة المتاحة؟</h3>
+                        <h3>ما هي خيارات الطباعة МетAILABLE؟</h3>
                         <span class="faq-icon"><i class="fas fa-plus"></i></span>
                     </div>
                     <div class="faq-answer">
@@ -551,7 +608,7 @@
                     <ul class="footer-contact">
                         <li><i class="fas fa-map-marker-alt"></i> المنطقة الصناعية، المدينة، المملكة العربية السعودية</li>
                         <li><i class="fas fa-phone-alt"></i> +966 55 123 4567</li>
-                        <li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f29b9c949db28280979f9b879fdf909d8a9781dc919d9f">[email&#160;protected]</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="523b3c343d122220373f3b273f7f303d2a37217c313d3f">[email&#160;protected]</a></li>
                         <li><i class="fas fa-clock"></i> الأحد - الخميس: 8:00 ص - 5:00 م</li>
                     </ul>
                 </div>
