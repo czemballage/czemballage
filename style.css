@@ -1,9 +1,9 @@
 /* ===== الأساسيات ===== */
 :root {
-    --primary-color: #8B0000; 
-    --secondary-color: #222222; 
-    --light-brown: #f0d4d4; 
-    --dark-brown: #5c0000; 
+    --primary-color: #D32F2F;       /* was #8c5c33, now a strong red */
+    --secondary-color: #000000;     /* was #e4b062, now black */
+    --light-brown: #FFEBEE;         /* was #f7cc8f, now a light red tint */
+    --dark-brown: #000000;          /* was #6a4425, now black */
     --white: #ffffff;
     --light-gray: #f7f7f7;
     --gray: #777777;
@@ -122,7 +122,7 @@ img {
 
 /* ===== القائمة العلوية ===== */
 header {
-    background-color: var(--white);
+    background-color: var(--secondary-color);  /* changed from var(--white) to black */
     box-shadow: var(--box-shadow);
     position: fixed;
     top: 0;
@@ -141,27 +141,38 @@ header .container {
 
 .logo {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    gap: 10px;
 }
 
-.logo .company-logo {
+.logo h1,
+.logo span {
+    margin: 0;
+    padding: 0;
+}
+
+.logo-img {
     width: 40px;
-    height: auto;
+    height: 40px; 
+    margin-left: 8px; 
 }
 
-.logo .company-name {
+.company-name {
     font-size: 1.8rem;
-    font-weight: 700;
+    margin: 0;
+    display: flex;
+    align-items: center;
 }
 
-.logo .red-text {
-    color: var(--primary-color);
+.company-name-red {
+    color: var(--primary-color); 
 }
 
-.logo .black-text {
-    color: var(--secondary-color);
+.company-name-black {
+    color: var(--secondary-color); 
+    background-color: var(--white); 
+    padding: 2px 6px;
+    border-radius: var(--border-radius);
+    margin-right: 4px;
 }
 
 nav ul {
@@ -179,7 +190,7 @@ nav ul li:last-child {
 nav ul li a {
     font-size: 1rem;
     font-weight: 600;
-    color: var(--dark-gray);
+    color: var(--white);  /* use white for nav links on dark header */
     transition: var(--transition);
     padding: 5px 0;
     position: relative;
@@ -198,7 +209,7 @@ nav ul li a::after {
 
 nav ul li a:hover,
 nav ul li a.active {
-    color: var(--primary-color);
+    color: var(--primary-color);  /* red accent on hover/active */
 }
 
 nav ul li a:hover::after,
@@ -1019,21 +1030,17 @@ nav ul li a.active::after {
         right: -100%;
         width: 80%;
         height: calc(100vh - 70px);
-        background-color: var(--white);
+        background-color: var(--secondary-color);  
         box-shadow: var(--box-shadow);
         padding: 40px 20px;
         transition: var(--transition);
         z-index: 999;
     }
-
-    nav.show {
-        right: 0;
-    }
-
+    
     nav ul {
         flex-direction: column;
     }
-
+    
     nav ul li {
         margin-right: 0;
         margin-bottom: 20px;
@@ -1043,6 +1050,11 @@ nav ul li a.active::after {
         display: block;
         font-size: 1.1rem;
         padding: 10px 0;
+        color: var(--white);  
+    }
+    
+    nav.show {
+        right: 0;
     }
 
     .hero .container {
