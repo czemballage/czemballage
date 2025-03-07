@@ -1,178 +1,78 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // تفعيل القائمة المتجاوبة
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const navbar = document.getElementById('navbar');
+    const body = document.body;
 
-    mobileMenuBtn.addEventListener('click', function() {
+    // Toggle mobile menu with animation
+    mobileMenuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
         navbar.classList.toggle('show');
-    });
-
-    // تفعيل الروابط النشطة في القائمة
-    const navLinks = document.querySelectorAll('nav ul li a');
-    const sections = document.querySelectorAll('section');
-
-    window.addEventListener('scroll', function() {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (pageYOffset >= (sectionTop - 200)) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
-    });
-
-    // زر التمرير لأعلى
-    const scrollTopBtn = document.getElementById('scroll-top');
-
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            scrollTopBtn.classList.add('show');
-        } else {
-            scrollTopBtn.classList.remove('show');
-        }
-    });
-
-    scrollTopBtn.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-
-    // تصغير القائمة عند التمرير
-    const header = document.querySelector('header');
-
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 100) {
-            header.style.padding = '10px 0';
-        } else {
-            header.style.padding = '15px 0';
-        }
-    });
-
-    // تفعيل فلترة المنتجات
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const productCards = document.querySelectorAll('.product-card');
-
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            // إزالة الكلاس النشط من جميع الأزرار
-            filterBtns.forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // إضافة الكلاس النشط للزر المضغوط
+        body.style.overflow = navbar.classList.contains('show') ? 'hidden' : '';
+        this.innerHTML = navbar.classList.contains('show') ? 
+            '<i class="fas fa-times"></i>' : 
+            '<i class="fas fa-bars"></i>';
+        
+        // Add animation effect
+        if (navbar.classList.contains('show')) {
             this.classList.add('active');
-            
-            const filter = this.getAttribute('data-filter');
-            
-            // عرض أو إخفاء المنتجات حسب الفلتر
-            productCards.forEach(card => {
-                if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    });
-
-    // تفعيل سلايدر الشهادات
-    const testimonialsSlider = document.getElementById('testimonials-slider');
-    const testimonialItems = document.querySelectorAll('.testimonial-item');
-    const prevBtn = document.getElementById('prev-testimonial');
-    const nextBtn = document.getElementById('next-testimonial');
-    
-    let currentIndex = 0;
-
-    // إخفاء جميع الشهادات ما عدا الأولى
-    for (let i = 1; i < testimonialItems.length; i++) {
-        testimonialItems[i].style.display = 'none';
-    }
-
-    // التنقل للشهادة التالية
-    function nextTestimonial() {
-        testimonialItems[currentIndex].style.display = 'none';
-        currentIndex = (currentIndex + 1) % testimonialItems.length;
-        testimonialItems[currentIndex].style.display = 'block';
-    }
-
-    // التنقل للشهادة السابقة
-    function prevTestimonial() {
-        testimonialItems[currentIndex].style.display = 'none';
-        currentIndex = (currentIndex - 1 + testimonialItems.length) % testimonialItems.length;
-        testimonialItems[currentIndex].style.display = 'block';
-    }
-
-    // إضافة الأحداث للأزرار
-    nextBtn.addEventListener('click', nextTestimonial);
-    prevBtn.addEventListener('click', prevTestimonial);
-
-    // تبديل الشهادات تلقائياً كل 5 ثوان
-    setInterval(nextTestimonial, 5000);
-
-    // تفعيل الأكورديون للأسئلة الشائعة
-    const faqItems = document.querySelectorAll('.faq-item');
-
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        
-        question.addEventListener('click', function() {
-            // إغلاق جميع العناصر المفتوحة
-            faqItems.forEach(otherItem => {
-                if (otherItem !== item) {
-                    otherItem.classList.remove('active');
-                }
-            });
-            
-            // تبديل حالة العنصر المضغوط
-            item.classList.toggle('active');
-        });
-    });
-
-    // معالجة نموذج الاتصال
-    const contactForm = document.getElementById('contact-form');
-    const formMessage = document.getElementById('form-message');
-
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // الحصول على قيم النموذج
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
-        const service = document.getElementById('service').value;
-        const message = document.getElementById('message').value;
-
-        // التحقق من صحة البيانات (يمكن إضافة المزيد من التحقق)
-        if (!name || !email || !phone || !service || !message) {
-            showFormMessage('يرجى ملء جميع الحقول المطلوبة', 'error');
-            return;
+        } else {
+            this.classList.remove('active');
         }
-
-        // محاكاة إرسال النموذج
-        showFormMessage('تم استلام رسالتك بنجاح. سنتواصل معك قريباً!', 'success');
-        contactForm.reset();
     });
 
-    // عرض رسائل النموذج
-    function showFormMessage(text, type) {
-        formMessage.textContent = text;
-        formMessage.className = `form-message ${type}`;
-        formMessage.style.display = 'block';
-        
-        // إخفاء الرسالة بعد 5 ثوان
-        setTimeout(() => {
-            formMessage.style.display = 'none';
-        }, 5000);
-    }
-});
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (navbar.classList.contains('show') && 
+            !navbar.contains(e.target) && 
+            !mobileMenuBtn.contains(e.target)) {
+            navbar.classList.remove('show');
+            body.style.overflow = '';
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            mobileMenuBtn.classList.remove('active');
+        }
+    });
 
+    // Close mobile menu when clicking a link
+    const navLinks = document.querySelectorAll('nav ul li a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (navbar.classList.contains('show')) {
+                navbar.classList.remove('show');
+                body.style.overflow = '';
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                mobileMenuBtn.classList.remove('active');
+            }
+        });
+    });
+
+    // Improved header scroll behavior
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        const header = document.querySelector('header');
+        
+        if (currentScroll > lastScroll && currentScroll > 150) {
+            header.classList.add('header-hidden');
+        } else {
+            header.classList.remove('header-hidden');
+            
+            // Add shadow when scrolled
+            if (currentScroll > 10) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        }
+        lastScroll = currentScroll;
+    });
+
+    // Add active class to nav links based on current section
+    function updateActiveNavLink() {
+        const navLinks = document.querySelectorAll('nav ul li a');
+        // For now, we just keep the home link active
+        // This would be expanded with actual section detection in a full site
+    }
+    
+    // Initialize active link
+    updateActiveNavLink();
+});
