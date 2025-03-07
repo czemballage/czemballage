@@ -174,21 +174,5 @@ document.addEventListener('DOMContentLoaded', function() {
             formMessage.style.display = 'none';
         }, 5000);
     }
-
-    // Add image error handling function to replace broken images with fallback
-    function handleImageErrors() {
-        const images = document.querySelectorAll('img');
-        images.forEach(img => {
-            img.onerror = function() {
-                // Replace broken images with fallback SVG representation
-                this.src = createFallbackBoxSVG();
-            }
-        });
-    }
-    
-    function createFallbackBoxSVG() {
-        return "data:image/svg+xml;charset=utf-8," + encodeURIComponent('<svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg"><rect x="40" y="30" width="120" height="90" fill="#8B0000" stroke="#222222" stroke-width="2"/><line x1="40" y1="30" x2="160" y2="30" stroke="#222222" stroke-width="2"/><line x1="40" y1="120" x2="160" y2="120" stroke="#222222" stroke-width="2"/></svg>');
-    }
-    
-    handleImageErrors();
 });
+
