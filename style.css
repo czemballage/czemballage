@@ -8,11 +8,11 @@
     --light-gray: #f7f7f7;
     --gray: #777777;
     --dark-gray: #333333;
-    --beige: #f5f0e6;
-    --sand: #e8d5b7;
     --transition: all 0.3s ease;
-    --box-shadow: 0 10px 30px rgba(139, 0, 0, 0.1);
-    --border-radius: 12px;
+    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+    --box-shadow-3d: 0 15px 25px rgba(0, 0, 0, 0.2);
+    --perspective: 1000px;
 }
 
 * {
@@ -31,6 +31,19 @@ body {
     color: var(--dark-gray);
     background-color: var(--white);
     direction: rtl;
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 a {
@@ -56,12 +69,19 @@ img {
 
 .section-padding {
     padding: 80px 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section-padding.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .section-header {
     text-align: center;
     margin-bottom: 50px;
-    animation: fadeIn 0.8s ease forwards;
 }
 
 .section-header h2 {
@@ -144,19 +164,28 @@ header .container {
 
 .logo {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo-img {
+    height: 50px;
+    margin-left: 10px;
+}
+
+.logo-text {
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
 }
 
-.logo h1 {
+.brand-name {
     font-size: 1.8rem;
-    color: var(--primary-color);
-    margin: 0;
+    color: var(--secondary-color);
+    font-weight: bold;
 }
 
-.logo span {
-    font-size: 1rem;
-    color: var(--secondary-color);
+.brand-highlight {
+    color: var(--primary-color);
 }
 
 nav ul {
@@ -211,8 +240,9 @@ nav ul li a.active::after {
 /* ===== القسم الرئيسي ===== */
 .hero {
     padding: 150px 0 80px;
-    background: linear-gradient(to right, rgba(139, 0, 0, 0.1), rgba(232, 213, 183, 0.3));
+    background-color: var(--light-gray);
     overflow: hidden;
+    perspective: var(--perspective);
     position: relative;
 }
 
@@ -223,54 +253,68 @@ nav ul li a.active::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238b0000' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    opacity: 0.6;
-    z-index: 0;
+    background: linear-gradient(135deg, rgba(139, 0, 0, 0.05) 0%, rgba(34, 34, 34, 0.05) 100%);
+    z-index: -1;
 }
 
 .hero .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
-    z-index: 1;
-}
-
-.monument-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: var(--border-radius);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-    transition: var(--transition);
-    transform: perspective(1000px) rotateY(-5deg);
-}
-
-.monument-image:hover {
-    transform: perspective(1000px) rotateY(0deg) scale(1.02);
 }
 
 .hero-content {
     flex: 1;
     padding-left: 30px;
-    animation: slideInRight 1s ease-out forwards;
+}
+
+.hero-content h2 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: var(--gray);
+    margin-bottom: 30px;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 15px;
 }
 
 .hero-image {
     flex: 1;
     text-align: center;
-    animation: fadeIn 1.2s ease-out forwards;
-    position: relative;
+    perspective: var(--perspective);
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
 }
 
-.hero-image::after {
-    content: '';
-    position: absolute;
+.hero-image img, .hero-image svg {
     width: 100%;
-    height: 20px;
-    bottom: -20px;
-    left: 0;
-    background: radial-gradient(ellipse at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 70%);
-    filter: blur(5px);
+    max-width: 500px;
+    height: auto;
+    transform-style: preserve-3d;
+    animation: float3D 6s ease-in-out infinite;
+}
+
+@keyframes float3D {
+    0%, 100% {
+        transform: translateY(0) rotateY(0);
+    }
+    25% {
+        transform: translateY(-15px) rotateY(5deg);
+    }
+    50% {
+        transform: translateY(-20px) rotateY(0);
+    }
+    75% {
+        transform: translateY(-15px) rotateY(-5deg);
+    }
 }
 
 /* ===== قسم المميزات ===== */
@@ -289,13 +333,16 @@ nav ul li a.active::after {
     text-align: center;
     padding: 30px 20px;
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
-    animation: fadeIn 0.8s ease forwards;
+    box-shadow: var(--box-shadow-3d);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    backface-visibility: hidden;
+    perspective: var(--perspective);
+    transform-style: preserve-3d;
 }
 
 .feature-item:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) rotateY(5deg);
+    box-shadow: 0 20px 30px rgba(139, 0, 0, 0.15);
 }
 
 .feature-icon {
@@ -325,22 +372,9 @@ nav ul li a.active::after {
     color: var(--gray);
 }
 
-.feature-item:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.feature-item:nth-child(3) {
-    animation-delay: 0.4s;
-}
-
-.feature-item:nth-child(4) {
-    animation-delay: 0.6s;
-}
-
 /* ===== قسم الخدمات ===== */
 .services {
     background-color: var(--light-gray);
-    background-image: url("data:image/svg+xml,%3Csvg width='84' height='48' viewBox='0 0 84 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h12v6H0V0zm28 8h12v6H28V8zm14-8h12v6H42V0zm14 0h12v6H56V0zm0 8h12v6H56V8zM42 8h12v6H42V8zm0 16h12v6H42v-6zm14-8h12v6H56v-6zm14 0h12v6H70v-6zm0-16h12v6H70V0zM28 32h12v6H28v-6zM14 16h12v6H14v-6zM0 24h12v6H0v-6zm0 8h12v6H0v-6zm14 0h12v6H14v-6zm14 8h12v6H28v-6zm-14 0h12v6H14v-6zm28 0h12v6H42v-6zm14-8h12v6H56v-6zm0-8h12v6H56v-6zm14 8h12v6H70v-6zm0 8h12v6H70v-6zM14 24h12v6H14v-6zm14-8h12v6H28v-6zM14 8h12v6H14V8zM0 8h12v6H0V8z' fill='%238b0000' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
 
 .services-grid {
@@ -352,35 +386,18 @@ nav ul li a.active::after {
 .service-card {
     background-color: var(--white);
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-3d);
     padding: 40px 30px;
     text-align: center;
-    transition: var(--transition);
-    border: 1px solid transparent;
-    position: relative;
-    overflow: hidden;
-    animation: fadeIn 0.8s ease forwards;
-}
-
-.service-card:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 0;
-    background: linear-gradient(to bottom, rgba(139, 0, 0, 0.05), transparent);
-    transition: var(--transition);
-    z-index: 0;
-}
-
-.service-card:hover:before {
-    height: 100%;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    backface-visibility: hidden;
+    perspective: var(--perspective);
+    transform-style: preserve-3d;
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
-    border-color: rgba(139, 0, 0, 0.1);
+    transform: translateY(-10px) rotateY(5deg);
+    box-shadow: 0 20px 30px rgba(139, 0, 0, 0.15);
 }
 
 .service-icon {
@@ -399,16 +416,6 @@ nav ul li a.active::after {
     color: var(--primary-color);
 }
 
-.service-icon i.animated {
-    animation: pulse 1s ease;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
-}
-
 .service-card h3 {
     font-size: 1.3rem;
     color: var(--primary-color);
@@ -420,22 +427,9 @@ nav ul li a.active::after {
     color: var(--gray);
 }
 
-.service-card:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.service-card:nth-child(3) {
-    animation-delay: 0.4s;
-}
-
-.service-card:nth-child(4) {
-    animation-delay: 0.6s;
-}
-
 /* ===== قسم المنتجات ===== */
 .products {
     background-color: var(--white);
-    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%238b0000' fill-opacity='0.03' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 .product-filter {
@@ -470,18 +464,19 @@ nav ul li a.active::after {
 }
 
 .product-card {
-    background-color: var(--white);
+    background-color: var(--light-gray);
     border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
-    border: 1px solid transparent;
-    animation: fadeIn 0.8s ease forwards;
+    box-shadow: var(--box-shadow-3d);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    backface-visibility: hidden;
+    perspective: var(--perspective);
+    transform-style: preserve-3d;
 }
 
 .product-card:hover {
-    transform: translateY(-10px);
-    border-color: rgba(139, 0, 0, 0.1);
+    transform: translateY(-10px) rotateY(5deg);
+    box-shadow: 0 20px 30px rgba(139, 0, 0, 0.15);
 }
 
 .product-img {
@@ -489,14 +484,24 @@ nav ul li a.active::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--light-gray);
+    background-color: var(--white);
     padding: 20px;
+    perspective: var(--perspective);
+    transform-style: preserve-3d;
+    overflow: hidden;
 }
 
-.product-img svg {
+.product-img img, .product-img svg {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    transition: transform 0.5s ease;
+    transform-style: preserve-3d;
+}
+
+.product-card:hover .product-img img,
+.product-card:hover .product-img svg {
+    transform: rotateY(15deg) rotateX(5deg);
 }
 
 .product-card h3 {
@@ -511,35 +516,9 @@ nav ul li a.active::after {
     color: var(--gray);
 }
 
-.product-card:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.product-card:nth-child(3) {
-    animation-delay: 0.4s;
-}
-
-.product-card:nth-child(4) {
-    animation-delay: 0.6s;
-}
-
 /* ===== قسم من نحن ===== */
 .about {
-    background-color: var(--beige);
-    position: relative;
-    overflow: hidden;
-}
-
-.about::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, var(--sand) 0%, transparent 70%);
-    opacity: 0.6;
-    z-index: 0;
+    background-color: var(--light-gray);
 }
 
 .about .container {
@@ -562,7 +541,6 @@ nav ul li a.active::after {
     margin-bottom: 15px;
     font-size: 1rem;
     color: var(--gray);
-    animation: fadeIn 0.8s ease forwards;
 }
 
 .about-stats {
@@ -577,20 +555,11 @@ nav ul li a.active::after {
     background-color: var(--white);
     padding: 20px;
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    animation: fadeIn 0.8s ease forwards;
-}
-
-.stat-item:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.stat-item:nth-child(3) {
-    animation-delay: 0.4s;
-}
-
-.stat-item:nth-child(4) {
-    animation-delay: 0.6s;
+    box-shadow: var(--box-shadow-3d);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    backface-visibility: hidden;
+    perspective: var(--perspective);
+    transform-style: preserve-3d;
 }
 
 .stat-number {
@@ -612,14 +581,17 @@ nav ul li a.active::after {
 .about-image svg {
     width: 100%;
     max-width: 500px;
+    transform-style: preserve-3d;
+    animation: boxRotate 10s ease-in-out infinite;
 }
 
-.image-caption {
-    margin-top: 15px;
-    text-align: center;
-    font-style: italic;
-    color: var(--primary-color);
-    font-size: 0.9rem;
+@keyframes boxRotate {
+    0%, 100% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(15deg);
+    }
 }
 
 /* ===== قسم الشهادات ===== */
@@ -636,27 +608,18 @@ nav ul li a.active::after {
 
 .testimonial-item {
     padding: 0 20px;
-    animation: fadeIn 0.8s ease forwards;
-}
-
-.testimonial-item:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.testimonial-item:nth-child(3) {
-    animation-delay: 0.4s;
-}
-
-.testimonial-item:nth-child(4) {
-    animation-delay: 0.6s;
 }
 
 .testimonial-content {
     background-color: var(--light-gray);
     border-radius: var(--border-radius);
     padding: 30px;
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-3d);
     position: relative;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    backface-visibility: hidden;
+    perspective: var(--perspective);
+    transform-style: preserve-3d;
 }
 
 .testimonial-content::after {
@@ -732,8 +695,11 @@ nav ul li a.active::after {
     padding: 30px;
     background-color: var(--white);
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    animation: fadeIn 0.8s ease forwards;
+    box-shadow: var(--box-shadow-3d);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    backface-visibility: hidden;
+    perspective: var(--perspective);
+    transform-style: preserve-3d;
 }
 
 .contact-item {
@@ -797,8 +763,11 @@ nav ul li a.active::after {
     padding: 30px;
     background-color: var(--white);
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    animation: fadeIn 0.8s ease forwards;
+    box-shadow: var(--box-shadow-3d);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    backface-visibility: hidden;
+    perspective: var(--perspective);
+    transform-style: preserve-3d;
 }
 
 .form-group {
@@ -868,19 +837,6 @@ nav ul li a.active::after {
     filter: grayscale(100%);
     opacity: 0.7;
     transition: var(--transition);
-    animation: fadeIn 0.8s ease forwards;
-}
-
-.client-logo:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.client-logo:nth-child(3) {
-    animation-delay: 0.4s;
-}
-
-.client-logo:nth-child(4) {
-    animation-delay: 0.6s;
 }
 
 .client-logo:hover {
@@ -906,22 +862,13 @@ nav ul li a.active::after {
 .faq-item {
     background-color: var(--white);
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-3d);
     margin-bottom: 20px;
     overflow: hidden;
-    animation: fadeIn 0.8s ease forwards;
-}
-
-.faq-item:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.faq-item:nth-child(3) {
-    animation-delay: 0.4s;
-}
-
-.faq-item:nth-child(4) {
-    animation-delay: 0.6s;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    backface-visibility: hidden;
+    perspective: var(--perspective);
+    transform-style: preserve-3d;
 }
 
 .faq-question {
@@ -991,7 +938,7 @@ nav ul li a.active::after {
     color: var(--white);
     border: none;
     border-radius: 50%;
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-3d);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -1001,16 +948,22 @@ nav ul li a.active::after {
     visibility: hidden;
     transition: var(--transition);
     z-index: 999;
+    transform-style: preserve-3d;
 }
 
 .scroll-top-btn.show {
     opacity: 1;
     visibility: visible;
+    animation: pulse3D 2s infinite;
 }
 
-.scroll-top-btn:hover {
-    background-color: var(--dark-brown);
-    transform: translateY(-5px);
+@keyframes pulse3D {
+    0%, 100% {
+        transform: scale(1) translateZ(0);
+    }
+    50% {
+        transform: scale(1.1) translateZ(10px);
+    }
 }
 
 /* ===== التذييل ===== */
@@ -1177,7 +1130,6 @@ nav ul li a.active::after {
         padding: 40px 20px;
         transition: var(--transition);
         z-index: 999;
-        overflow-y: auto;
     }
 
     nav.show {
@@ -1210,102 +1162,50 @@ nav ul li a.active::after {
     }
 
     .hero-content h2 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
     .hero-btns {
         justify-content: center;
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .hero-btns .btn {
-        width: 100%;
     }
 
-    .section-header h2 {
-        font-size: 1.8rem;
-    }
-    
-    .section-header p {
-        font-size: 1rem;
-    }
-    
-    .services-grid,
-    .features .container,
-    .products-grid,
-    .about .container,
-    .contact-wrapper,
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
     .products-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .about-content .section-header {
         text-align: center;
     }
-    
+
     .about-content .section-header h2::after {
         left: 50%;
         transform: translateX(-50%);
     }
-    
-    .clients-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .footer-col {
-        margin-bottom: 30px;
-    }
 }
 
 @media (max-width: 576px) {
-    .product-filter {
-        flex-wrap: wrap;
+    .section-header h2 {
+        font-size: 2rem;
     }
-    
-    .filter-btn {
-        margin-bottom: 10px;
-        width: 45%;
-    }
-    
-    .testimonial-controls {
-        margin-top: 20px;
-    }
-    
-    .contact-form,
-    .contact-info {
-        padding: 20px;
-    }
-    
-    .form-group {
-        margin-bottom: 15px;
-    }
-    
-    .contact-icon {
-        width: 40px;
-        height: 40px;
-    }
-}
 
-/* ===== تحسينات للشاشات الصغيرة ===== */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(-50px);
+    .features .container,
+    .services-grid,
+    .products-grid,
+    .about-stats,
+    .footer-content {
+        grid-template-columns: 1fr;
     }
-    to {
-        opacity: 1;
-        transform: translateX(0);
+
+    .hero-btns {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero-btns .btn {
+        width: 100%;
+    }
+
+    .clients-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
