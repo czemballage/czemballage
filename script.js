@@ -2,36 +2,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // تفعيل القائمة المتجاوبة
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const navbar = document.getElementById('navbar');
-    const navLinks = document.querySelectorAll('nav ul li a');
 
-    // Toggle mobile menu
     mobileMenuBtn.addEventListener('click', function() {
         navbar.classList.toggle('show');
-        // Toggle menu icon
-        const icon = this.querySelector('i');
-        icon.classList.toggle('fa-bars');
-        icon.classList.toggle('fa-times');
-    });
-
-    // Close mobile menu when clicking a link
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            navbar.classList.remove('show');
-            mobileMenuBtn.querySelector('i').classList.remove('fa-times');
-            mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-        });
-    });
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!navbar.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-            navbar.classList.remove('show');
-            mobileMenuBtn.querySelector('i').classList.remove('fa-times');
-            mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-        }
     });
 
     // تفعيل الروابط النشطة في القائمة
+    const navLinks = document.querySelectorAll('nav ul li a');
     const sections = document.querySelectorAll('section');
 
     window.addEventListener('scroll', function() {
