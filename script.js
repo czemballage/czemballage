@@ -191,4 +191,107 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     handleImageErrors();
+
+    // تفعيل عداد الإحصائيات
+    function startCounters() {
+        const statNumbers = document.querySelectorAll('.stat-number');
+        
+        statNumbers.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-count'));
+            const duration = 2000; // 2 seconds for animation
+            const increment = target / (duration / 20); // Update every 20ms
+            let current = 0;
+            
+            const counter = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    stat.textContent = target + (stat.textContent.includes('%') ? '%' : '+');
+                    clearInterval(counter);
+                } else {
+                    stat.textContent = Math.floor(current) + (stat.textContent.includes('%') ? '%' : '+');
+                }
+            }, 20);
+        });
+    }
+    
+    // Start counters when the about section becomes visible
+    const aboutSection = document.getElementById('about');
+    let counterStarted = false;
+    
+    window.addEventListener('scroll', function() {
+        if (!counterStarted && isInViewport(aboutSection)) {
+            startCounters();
+            counterStarted = true;
+        }
+    });
+    
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.bottom >= 0
+        );
+    }
+
+    // تحسين تفاعلية عناصر الموقع
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            const icon = this.querySelector('.service-icon i');
+            icon.classList.add('animated');
+            setTimeout(() => {
+                icon.classList.remove('animated');
+            }, 1000);
+        });
+    });
+
+    // معالجة الحركة الإنسيابية للتنقل في الموقع
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // إغلاق القائمة المتنقلة عند النقر على رابط
+                if (navbar.classList.contains('show')) {
+                    navbar.classList.remove('show');
+                }
+            }
+        });
+    });
+
+    // Add parallax effect to monument image
+    window.addEventListener('scroll', function() {
+        const monuments = document.querySelectorAll('.monument-image');
+        monuments.forEach(monument => {
+            const scrollPosition = window.pageYOffset;
+            // Subtle parallax effect
+            monument.style.transform = `perspective(1000px) rotateY(-5deg) translateY(${scrollPosition * 0.03}px)`;
+        });
+    });
+
+    // Add image zoom effect on hover for product cards
+    const productCardsHover = document.querySelectorAll('.product-card');
+    productCardsHover.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            const img = this.querySelector('.product-img');
+            if (img) {
+                img.style.transform = 'scale(1.05)';
+                img.style.transition = 'transform 0.3s ease';
+            }
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            const img = this.querySelector('.product-img');
+            if (img) {
+                img.style.transform = 'scale(1)';
+            }
+        });
+    });
 });
