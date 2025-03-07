@@ -50,11 +50,10 @@ img {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    transition: padding 0.3s ease;
 }
 
 .section-padding {
-    padding: 50px 0;
+    padding: 80px 0;
 }
 
 .section-header {
@@ -142,33 +141,27 @@ header .container {
 
 .logo {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 15px;
-    max-width: 600px; 
+    gap: 10px;
 }
 
-.logo-img {
-    height: 90px; 
-    width: auto;
-    object-fit: contain;
-    transition: height 0.3s ease;
+.logo .company-logo {
+    width: 40px;
+    height: auto;
 }
 
-.logo-text {
-    display: flex;
-    flex-direction: column;
-}
-
-.brand-name {
-    font-size: 3.2rem; 
-    color: var(--secondary-color);
+.logo .company-name {
+    font-size: 1.8rem;
     font-weight: 700;
-    line-height: 1.2;
-    transition: font-size 0.3s ease;
 }
 
-.brand-highlight {
+.logo .red-text {
     color: var(--primary-color);
+}
+
+.logo .black-text {
+    color: var(--secondary-color);
 }
 
 nav ul {
@@ -176,7 +169,7 @@ nav ul {
 }
 
 nav ul li {
-    margin-right: 35px;
+    margin-right: 30px;
 }
 
 nav ul li:last-child {
@@ -184,7 +177,7 @@ nav ul li:last-child {
 }
 
 nav ul li a {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--dark-gray);
     transition: var(--transition);
@@ -225,7 +218,6 @@ nav ul li a.active::after {
     padding: 150px 0 80px;
     background-color: var(--light-gray);
     overflow: hidden;
-    transition: padding 0.3s ease;
 }
 
 .hero .container {
@@ -282,7 +274,6 @@ nav ul li a.active::after {
 .features {
     padding: 60px 0;
     background-color: var(--white);
-    transition: padding 0.3s ease;
 }
 
 .features .container {
@@ -295,13 +286,12 @@ nav ul li a.active::after {
     text-align: center;
     padding: 30px 20px;
     border-radius: var(--border-radius);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
 }
 
 .feature-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transform: translateY(-10px);
 }
 
 .feature-icon {
@@ -334,7 +324,6 @@ nav ul li a.active::after {
 /* ===== قسم الخدمات ===== */
 .services {
     background-color: var(--light-gray);
-    transition: padding 0.3s ease;
 }
 
 .services-grid {
@@ -346,15 +335,14 @@ nav ul li a.active::after {
 .service-card {
     background-color: var(--white);
     border-radius: var(--border-radius);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--box-shadow);
     padding: 40px 30px;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: var(--transition);
 }
 
 .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transform: translateY(-10px);
 }
 
 .service-icon {
@@ -387,7 +375,6 @@ nav ul li a.active::after {
 /* ===== قسم المنتجات ===== */
 .products {
     background-color: var(--white);
-    transition: padding 0.3s ease;
 }
 
 .product-filter {
@@ -425,13 +412,12 @@ nav ul li a.active::after {
     background-color: var(--light-gray);
     border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
 }
 
 .product-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transform: translateY(-10px);
 }
 
 .product-img {
@@ -464,7 +450,6 @@ nav ul li a.active::after {
 /* ===== قسم من نحن ===== */
 .about {
     background-color: var(--light-gray);
-    transition: padding 0.3s ease;
 }
 
 .about .container {
@@ -528,7 +513,6 @@ nav ul li a.active::after {
 /* ===== قسم الشهادات ===== */
 .testimonials {
     background-color: var(--white);
-    transition: padding 0.3s ease;
 }
 
 .testimonials-slider {
@@ -546,7 +530,7 @@ nav ul li a.active::after {
     background-color: var(--light-gray);
     border-radius: var(--border-radius);
     padding: 30px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--box-shadow);
     position: relative;
 }
 
@@ -611,7 +595,6 @@ nav ul li a.active::after {
 /* ===== قسم الاتصال ===== */
 .contact {
     background-color: var(--light-gray);
-    transition: padding 0.3s ease;
 }
 
 .contact-wrapper {
@@ -688,7 +671,7 @@ nav ul li a.active::after {
     padding: 30px;
     background-color: var(--white);
     border-radius: var(--border-radius);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--box-shadow);
 }
 
 .form-group {
@@ -773,7 +756,6 @@ nav ul li a.active::after {
 /* ===== قسم الأسئلة الشائعة ===== */
 .faq {
     background-color: var(--light-gray);
-    transition: padding 0.3s ease;
 }
 
 .faq-accordion {
@@ -979,83 +961,56 @@ nav ul li a.active::after {
     color: #bbb;
 }
 
-/* ===== Desktop-Specific Styles (992px and above) ===== */
-@media (min-width: 992px) {
-    .logo {
-        max-width: 400px;
-    }
-
-    .logo-img {
-        height: 65px;
-    }
-
-    .brand-name {
-        font-size: 2.2rem;
-    }
-    .hero .container {
-        display: flex;
-        flex-direction: row;
-        gap: 50px;
-    }
-
-    .hero-content,
-    .hero-image {
-        flex: 1;
-    }
-
-    .features .container {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    .services-grid {
-        grid-template-columns: repeat(3, 1fr);
+/* ===== التوافقية مع الأجهزة المختلفة ===== */
+@media (max-width: 1200px) {
+    .hero-content h2 {
+        font-size: 2.5rem;
     }
 
     .products-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    .about .container {
-        grid-template-columns: 1fr 1fr;
-        gap: 50px;
-    }
-
-    .contact-wrapper {
-        grid-template-columns: 1fr 1fr;
-        gap: 50px;
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .clients-grid {
-        grid-template-columns: repeat(6, 1fr);
-    }
-
-    .footer-content {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* ===== Mobile-Specific Styles (991px and below) ===== */
-@media (max-width: 991px) {
+@media (max-width: 992px) {
+    .features .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about .container,
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .about-content {
+        order: 2;
+    }
+
+    .about-image {
+        order: 1;
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
     header .container {
         padding: 0 15px;
     }
 
-    .logo {
-        max-width: 440px;
-    }
-
-    .logo-img {
-        height: 80px;
-    }
-
-    .brand-name {
-        font-size: 2.8rem;
-    }
-
     .mobile-menu-btn {
         display: block;
-        font-size: 1.8rem;
-        padding: 10px;
     }
 
     nav {
@@ -1065,9 +1020,9 @@ nav ul li a.active::after {
         width: 80%;
         height: calc(100vh - 70px);
         background-color: var(--white);
-        padding: 20px;
-        transition: 0.3s;
-        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+        box-shadow: var(--box-shadow);
+        padding: 40px 20px;
+        transition: var(--transition);
         z-index: 999;
     }
 
@@ -1077,114 +1032,27 @@ nav ul li a.active::after {
 
     nav ul {
         flex-direction: column;
-        gap: 20px;
     }
 
     nav ul li {
-        margin: 0;
+        margin-right: 0;
+        margin-bottom: 20px;
     }
 
     nav ul li a {
-        font-size: 1.4rem;
-        padding: 10px 0;
         display: block;
-    }
-
-    .hero {
-        padding: 100px 0 50px;
+        font-size: 1.1rem;
+        padding: 10px 0;
     }
 
     .hero .container {
-        flex-direction: column;
+        flex-direction: column-reverse;
         text-align: center;
     }
 
     .hero-content {
-        padding: 0;
-        margin-bottom: 40px;
-    }
-
-    .hero-btns {
-        justify-content: center;
-    }
-
-    .features .container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-
-    .about .container {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-    .about-stats {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .contact-wrapper {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-    .clients-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-    }
-
-    .footer-content {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-    }
-
-    .section-header h2 {
-        font-size: 2rem;
-    }
-
-    .section-padding {
-        padding: 40px 0;
-    }
-}
-
-/* ===== Small Mobile Styles (576px and below) ===== */
-@media (max-width: 576px) {
-    .logo {
-        max-width: 350px;
-    }
-
-    .logo-img {
-        height: 70px;
-    }
-
-    .brand-name {
-        font-size: 2.4rem;
-    }
-    .features .container,
-    .services-grid,
-    .products-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .about-stats {
-        grid-template-columns: 1fr;
-    }
-
-    .clients-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr;
+        padding-left: 0;
+        margin-top: 30px;
     }
 
     .hero-content h2 {
@@ -1192,44 +1060,46 @@ nav ul li a.active::after {
     }
 
     .hero-btns {
-        flex-direction: column;
-        gap: 15px;
+        justify-content: center;
     }
 
-    .btn {
-        width: 100%;
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .section-header h2 {
-        font-size: 1.8rem;
-    }
-    
-    header .container {
-        padding: 10px 15px;
+    .about-content .section-header {
+        text-align: center;
     }
 
-    nav ul li a {
-        font-size: 1.3rem;
-        padding: 12px 0;
-    }
-
-    .mobile-menu-btn {
-        font-size: 1.8rem;
-        padding: 8px;
+    .about-content .section-header h2::after {
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 
-/* ===== Extra Small Mobile Styles (360px and below) ===== */
-@media (max-width: 360px) {
-    .logo {
-        max-width: 240px;
+@media (max-width: 576px) {
+    .section-header h2 {
+        font-size: 2rem;
     }
 
-    .logo-img {
-        height: 55px;
+    .features .container,
+    .services-grid,
+    .products-grid,
+    .about-stats,
+    .footer-content {
+        grid-template-columns: 1fr;
     }
 
-    .brand-name {
-        font-size: 1.8rem;
+    .hero-btns {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero-btns .btn {
+        width: 100%;
+    }
+
+    .clients-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
