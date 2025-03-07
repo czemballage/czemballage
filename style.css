@@ -50,6 +50,7 @@ img {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    transition: padding 0.3s ease;
 }
 
 .section-padding {
@@ -143,13 +144,14 @@ header .container {
     display: flex;
     align-items: center;
     gap: 10px;
-    max-width: 300px;
+    max-width: 350px; 
 }
 
 .logo-img {
-    height: 40px;
+    height: 45px; 
     width: auto;
     object-fit: contain;
+    transition: height 0.3s ease;
 }
 
 .logo-text {
@@ -158,10 +160,11 @@ header .container {
 }
 
 .brand-name {
-    font-size: 1.5rem;
+    font-size: 1.6rem; 
     color: var(--secondary-color);
     font-weight: 700;
     line-height: 1.2;
+    transition: font-size 0.3s ease;
 }
 
 .brand-highlight {
@@ -222,6 +225,7 @@ nav ul li a.active::after {
     padding: 150px 0 80px;
     background-color: var(--light-gray);
     overflow: hidden;
+    transition: padding 0.3s ease;
 }
 
 .hero .container {
@@ -278,6 +282,7 @@ nav ul li a.active::after {
 .features {
     padding: 60px 0;
     background-color: var(--white);
+    transition: padding 0.3s ease;
 }
 
 .features .container {
@@ -290,12 +295,13 @@ nav ul li a.active::after {
     text-align: center;
     padding: 30px 20px;
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
 }
 
 .feature-item:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
 .feature-icon {
@@ -328,6 +334,7 @@ nav ul li a.active::after {
 /* ===== قسم الخدمات ===== */
 .services {
     background-color: var(--light-gray);
+    transition: padding 0.3s ease;
 }
 
 .services-grid {
@@ -339,14 +346,15 @@ nav ul li a.active::after {
 .service-card {
     background-color: var(--white);
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
     padding: 40px 30px;
     text-align: center;
-    transition: var(--transition);
+    transition: all 0.3s ease;
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
 .service-icon {
@@ -379,6 +387,7 @@ nav ul li a.active::after {
 /* ===== قسم المنتجات ===== */
 .products {
     background-color: var(--white);
+    transition: padding 0.3s ease;
 }
 
 .product-filter {
@@ -416,12 +425,13 @@ nav ul li a.active::after {
     background-color: var(--light-gray);
     border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
 }
 
 .product-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
 .product-img {
@@ -454,6 +464,7 @@ nav ul li a.active::after {
 /* ===== قسم من نحن ===== */
 .about {
     background-color: var(--light-gray);
+    transition: padding 0.3s ease;
 }
 
 .about .container {
@@ -517,6 +528,7 @@ nav ul li a.active::after {
 /* ===== قسم الشهادات ===== */
 .testimonials {
     background-color: var(--white);
+    transition: padding 0.3s ease;
 }
 
 .testimonials-slider {
@@ -534,7 +546,7 @@ nav ul li a.active::after {
     background-color: var(--light-gray);
     border-radius: var(--border-radius);
     padding: 30px;
-    box-shadow: var(--box-shadow);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
     position: relative;
 }
 
@@ -599,6 +611,7 @@ nav ul li a.active::after {
 /* ===== قسم الاتصال ===== */
 .contact {
     background-color: var(--light-gray);
+    transition: padding 0.3s ease;
 }
 
 .contact-wrapper {
@@ -675,7 +688,7 @@ nav ul li a.active::after {
     padding: 30px;
     background-color: var(--white);
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
 }
 
 .form-group {
@@ -760,6 +773,7 @@ nav ul li a.active::after {
 /* ===== قسم الأسئلة الشائعة ===== */
 .faq {
     background-color: var(--light-gray);
+    transition: padding 0.3s ease;
 }
 
 .faq-accordion {
@@ -1006,11 +1020,22 @@ nav ul li a.active::after {
     .footer-content {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .logo-img {
+        height: 40px;
+    }
+
+    .brand-name {
+        font-size: 1.4rem;
+    }
 }
 
 @media (max-width: 768px) {
     header .container {
         padding: 0 15px;
+        height: 60px; 
+        display: flex;
+        align-items: center;
     }
 
     .mobile-menu-btn {
@@ -1018,7 +1043,13 @@ nav ul li a.active::after {
         font-size: 1.5rem;
         color: var(--primary-color);
         cursor: pointer;
-        padding: 5px;
+        padding: 8px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    .mobile-menu-btn:hover {
+        background-color: var(--light-brown);
     }
 
     nav {
@@ -1032,44 +1063,29 @@ nav ul li a.active::after {
         transition: all 0.3s ease;
         z-index: 999;
         box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+        overflow-y: auto; 
     }
 
     nav.show {
         right: 0;
+        animation: slideIn 0.3s ease-out;
     }
 
-    nav ul {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    nav ul li {
-        margin: 0;
-        width: 100%;
-    }
-
-    nav ul li a {
-        display: block;
-        padding: 10px 15px;
-        font-size: 1.1rem;
-        border-radius: var(--border-radius);
-    }
-
-    nav ul li a:hover,
-    nav ul li a.active {
-        background-color: var(--light-brown);
+    @keyframes slideIn {
+        from { right: -100%; }
+        to { right: 0; }
     }
 
     .logo {
-        max-width: 200px;
+        max-width: 250px; 
     }
 
     .logo-img {
-        height: 30px;
+        height: 35px; 
     }
 
     .brand-name {
-        font-size: 1.2rem;
+        font-size: 1.3rem; 
     }
 
     .hero {
@@ -1107,11 +1123,6 @@ nav ul li a.active::after {
         padding: 12px;
         font-size: 1rem;
     }
-
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
 }
 
 @media (max-width: 576px) {
@@ -1139,6 +1150,27 @@ nav ul li a.active::after {
     .clients-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .logo {
+        max-width: 220px;
+    }
+
+    .logo-img {
+        height: 32px;
+    }
+
+    .brand-name {
+        font-size: 1.2rem;
+    }
+
+    .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
 }
 
 @media (max-width: 375px) {
@@ -1152,5 +1184,25 @@ nav ul li a.active::after {
 
     .section-header h2 {
         font-size: 1.8rem;
+    }
+
+    .logo {
+        max-width: 200px;
+    }
+
+    .logo-img {
+        height: 30px;
+    }
+
+    .brand-name {
+        font-size: 1.1rem;
+    }
+
+    .section-padding {
+        padding: 40px 0;
+    }
+
+    .container {
+        padding: 0 12px;
     }
 }
