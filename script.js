@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         navbar.classList.toggle('show');
         body.style.overflow = navbar.classList.contains('show') ? 'hidden' : '';
         this.innerHTML = navbar.classList.contains('show') ? 
-            '<i class="fas fa-times"></i>' : 
+            '<i class="fas fa-times" style="color: #D32F2F;"></i>' : 
             '<i class="fas fa-bars"></i>';
         
         // Add animation effect
