@@ -1,9 +1,9 @@
 /* ===== الأساسيات ===== */
 :root {
-    --primary-color: #8c5c33;
-    --secondary-color: #e4b062;
-    --light-brown: #f7cc8f;
-    --dark-brown: #6a4425;
+    --primary-color: #8B0000; 
+    --secondary-color: #222222; 
+    --light-brown: #f0d4d4; 
+    --dark-brown: #5c0000; 
     --white: #ffffff;
     --light-gray: #f7f7f7;
     --gray: #777777;
@@ -1095,4 +1095,3 @@ nav ul li a.active::after {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
