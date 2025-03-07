@@ -130,7 +130,7 @@ header {
     left: 0;
     right: 0;
     z-index: 1000;
-    padding: 10px 0;
+    padding: 15px 0;
     transition: var(--transition);
 }
 
@@ -143,8 +143,8 @@ header .container {
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
-    max-width: 350px; 
+    gap: 15px;
+    max-width: 300px; 
 }
 
 .logo-img {
@@ -176,7 +176,7 @@ nav ul {
 }
 
 nav ul li {
-    margin-right: 30px;
+    margin-right: 35px;
 }
 
 nav ul li:last-child {
@@ -184,7 +184,7 @@ nav ul li:last-child {
 }
 
 nav ul li a {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: var(--dark-gray);
     transition: var(--transition);
@@ -979,176 +979,66 @@ nav ul li a.active::after {
     color: #bbb;
 }
 
-/* ===== التوافقية مع الأجهزة المختلفة ===== */
-@media (max-width: 1200px) {
-    .hero-content h2 {
-        font-size: 2.5rem;
+/* ===== Desktop-Specific Styles (992px and above) ===== */
+@media (min-width: 992px) {
+    .logo {
+        max-width: 400px;
     }
 
-    .products-grid {
-        grid-template-columns: repeat(3, 1fr);
+    .logo-img {
+        height: 55px;
     }
 
-    .clients-grid {
-        grid-template-columns: repeat(3, 1fr);
+    .brand-name {
+        font-size: 1.8rem;
     }
-}
 
-@media (max-width: 992px) {
+    .hero .container {
+        display: flex;
+        flex-direction: row;
+        gap: 50px;
+    }
+
+    .hero-content,
+    .hero-image {
+        flex: 1;
+    }
+
     .features .container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
 
     .services-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 
-    .about .container,
+    .products-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .about .container {
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+    }
+
     .contact-wrapper {
-        grid-template-columns: 1fr;
-        gap: 40px;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
     }
 
-    .about-content {
-        order: 2;
-    }
-
-    .about-image {
-        order: 1;
+    .clients-grid {
+        grid-template-columns: repeat(6, 1fr);
     }
 
     .footer-content {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .logo-img {
-        height: 40px;
-    }
-
-    .brand-name {
-        font-size: 1.4rem;
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
-@media (max-width: 768px) {
+/* ===== Mobile-Specific Styles (991px and below) ===== */
+@media (max-width: 991px) {
     header .container {
         padding: 0 15px;
-        height: 60px; 
-        display: flex;
-        align-items: center;
-    }
-
-    .mobile-menu-btn {
-        display: block;
-        font-size: 1.5rem;
-        color: var(--primary-color);
-        cursor: pointer;
-        padding: 8px;
-        border-radius: 4px;
-        transition: background-color 0.3s ease;
-    }
-
-    .mobile-menu-btn:hover {
-        background-color: var(--light-brown);
-    }
-
-    nav {
-        background-color: var(--white);
-        position: fixed;
-        top: 60px;
-        right: -100%;
-        width: 80%;
-        height: calc(100vh - 60px);
-        padding: 20px;
-        transition: all 0.3s ease;
-        z-index: 999;
-        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-        overflow-y: auto; 
-    }
-
-    nav.show {
-        right: 0;
-        animation: slideIn 0.3s ease-out;
-    }
-
-    @keyframes slideIn {
-        from { right: -100%; }
-        to { right: 0; }
-    }
-
-    .logo {
-        max-width: 250px; 
-    }
-
-    .logo-img {
-        height: 35px; 
-    }
-
-    .brand-name {
-        font-size: 1.3rem; 
-    }
-
-    .hero {
-        padding: 100px 0 50px;
-    }
-
-    .hero-content {
-        text-align: center;
-        padding: 0;
-    }
-
-    .hero-content h2 {
-        font-size: 2rem;
-    }
-
-    .hero-image {
-        margin-top: 30px;
-    }
-
-    .features .container,
-    .services-grid,
-    .products-grid,
-    .clients-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-    }
-
-    .section-padding {
-        padding: 50px 0;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-        padding: 12px;
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .section-header h2 {
-        font-size: 2rem;
-    }
-
-    .features .container,
-    .services-grid,
-    .products-grid,
-    .about-stats,
-    .footer-content {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-btns {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .hero-btns .btn {
-        width: 100%;
-    }
-
-    .clients-grid {
-        grid-template-columns: repeat(2, 1fr);
     }
 
     .logo {
@@ -1156,53 +1046,192 @@ nav ul li a.active::after {
     }
 
     .logo-img {
-        height: 32px;
+        height: 50px;
     }
 
     .brand-name {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        font-size: 1.8rem;
+        padding: 10px;
+    }
+
+    nav {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 80%;
+        height: calc(100vh - 70px);
+        background-color: var(--white);
+        padding: 20px;
+        transition: 0.3s;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+        z-index: 999;
+    }
+
+    nav.show {
+        right: 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav ul li {
+        margin: 0;
+    }
+
+    nav ul li a {
+        font-size: 1.4rem;
+        padding: 10px 0;
+        display: block;
+    }
+
+    .hero {
+        padding: 100px 0 50px;
+    }
+
+    .hero .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content {
+        padding: 0;
+        margin-bottom: 40px;
+    }
+
+    .hero-btns {
+        justify-content: center;
+    }
+
+    .features .container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .about .container {
+        grid-template-columns: 1fr;
+        gap: 30px;
     }
 
     .about-stats {
         grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
     }
 
-    .stat-number {
-        font-size: 2rem;
-    }
-}
-
-@media (max-width: 375px) {
-    .brand-name {
-        font-size: 1rem;
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 30px;
     }
 
-    .logo-img {
-        height: 25px;
+    .clients-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
     }
 
     .section-header h2 {
-        font-size: 1.8rem;
-    }
-
-    .logo {
-        max-width: 200px;
-    }
-
-    .logo-img {
-        height: 30px;
-    }
-
-    .brand-name {
-        font-size: 1.1rem;
+        font-size: 2rem;
     }
 
     .section-padding {
         padding: 40px 0;
     }
+}
 
-    .container {
-        padding: 0 12px;
+/* ===== Small Mobile Styles (576px and below) ===== */
+@media (max-width: 576px) {
+    .logo {
+        max-width: 280px;
+    }
+
+    .logo-img {
+        height: 45px;
+    }
+
+    .brand-name {
+        font-size: 1.5rem;
+    }
+
+    .features .container,
+    .services-grid,
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .clients-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content h2 {
+        font-size: 2.2rem;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .section-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    header .container {
+        padding: 10px 15px;
+    }
+
+    nav ul li a {
+        font-size: 1.3rem;
+        padding: 12px 0;
+    }
+
+    .mobile-menu-btn {
+        font-size: 1.8rem;
+        padding: 8px;
+    }
+}
+
+/* ===== Extra Small Mobile Styles (360px and below) ===== */
+@media (max-width: 360px) {
+    .logo {
+        max-width: 240px;
+    }
+
+    .logo-img {
+        height: 40px;
+    }
+
+    .brand-name {
+        font-size: 1.3rem;
     }
 }
