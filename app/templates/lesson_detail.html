@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}{{ lesson.title }}{% endblock %}
+{% block content %}
+    <h2>{{ lesson.title }}</h2>
+    <div class="lesson-content">
+        {{ lesson.content | safe }} {# Assuming content might be HTML/Markdown #}
+    </div>
+    <hr>
+    
+    <div class="exercise-section">
+        <h3>Exercises</h3>
+        {% if exercise %}
+            <h4>{{ exercise.question }}</h4>
+            {% if user_progress and user_progress.completed %}
+                <div class="exercise-feedback">
+                    <p>You have already completed this exercise.</p>
+                    <p>Your answer: {{ user_progress.last_answer if user_progress.last_answer else "N/A" }}</p>
+                    <p>Score: {{ user_progress.score }}</p>
+                </div>
+                {# Logic for "Next Exercise" can be a simple link back to the lesson, which will then serve the next one #}
+                <a href="{{ url_for('lesson_detail', lesson_id=lesson.id) }}" class="btn">Next Exercise or Check Progress</a>
+            {% else %}
+                <form method="POST" action="{{ url_for('submit_exercise', exercise_id=exercise.id) }}">
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        {{ form.answer.label }}
+                        <div class="radio-options">
+                            {% for subfield in form.answer %}
+                                <div>{{ subfield }} {{ subfield.label }}</div>
+                            {% endfor %}
+                        </div>
+                        {% for error in form.answer.errors %}
+                            <span class="error-message" style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.submit(class="btn") }}
+                    </div>
+                </form>
+            {% endif %}
+        {% elif lesson_complete %}
+            <p>Congratulations! You have completed all exercises for this lesson.</p>
+        {% else %}
+            <p>No exercises available for this lesson yet, or you have completed them all.</p>
+        {% endif %}
+    </div>
+    <hr>
+    <p><a href="{{ url_for('course_detail', course_id=lesson.course_id) }}" class="btn btn-secondary">Back to Course</a></p>
+{% endblock %}

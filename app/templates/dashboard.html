@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+    <h2>Dashboard</h2>
+    <p>Welcome, {{ current_user.username }}!</p>
+    
+    <div class="dashboard-stats">
+        <h4>Your Stats:</h4>
+        <p><strong>Points:</strong> {{ current_user.points if current_user.points is not none else 0 }}</p>
+        <p><strong>Current Streak:</strong> {{ current_user.current_streak if current_user.current_streak is not none else 0 }} days</p>
+        <p><em>Complete an exercise each day to increase your streak!</em></p>
+    </div>
+    <hr>
+    <p>This is your dashboard. More features to come!</p>
+    <p><a href="{{ url_for('courses') }}" class="btn">Browse Courses</a></p>
+{% endblock %}
