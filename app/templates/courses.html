@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Courses{% endblock %}
+{% block content %}
+    <h2>Available Courses</h2>
+    {% if courses %}
+        <ul class="course-list">
+            {% for course in courses %}
+                <li>
+                    <a href="{{ url_for('course_detail', course_id=course.id) }}">{{ course.title }}</a>
+                    {% if course.description %}
+                        <p>{{ course.description }}</p>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No courses available at the moment.</p>
+    {% endif %}
+{% endblock %}
