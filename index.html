@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Chat</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-messages">
+            <!-- Chat messages will appear here -->
+        </div>
+        <div id="chat-input">
+            <input type="text" id="message-input" placeholder="Type your message...">
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+    <script>
+        // Basic JavaScript for sending messages (optional, can be added later)
+        const sendButton = document.getElementById('send-button');
+        const messageInput = document.getElementById('message-input');
+        const chatMessages = document.getElementById('chat-messages');
+
+        sendButton.addEventListener('click', () => {
+            const messageText = messageInput.value;
+            if (messageText.trim() !== '') {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message');
+                messageElement.textContent = messageText;
+                chatMessages.appendChild(messageElement);
+                messageInput.value = ''; // Clear input field
+            }
+        });
+
+        // Optional: Allow sending message by pressing Enter
+        messageInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                sendButton.click();
+            }
+        });
+    </script>
+</body>
+</html>
